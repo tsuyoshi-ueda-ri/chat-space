@@ -45,3 +45,13 @@ Things you may want to cover:
 ### Association
 - has_many :message
 - has_many :group
+
+## groupsテーブル
+|Column|Type|Options|
+|------|----|-------|
+|group_name|string|null: false|
+|name|string|null: false, foreign_key: true|
+
+### Association
+- belongs_to :message
+- has_many :user

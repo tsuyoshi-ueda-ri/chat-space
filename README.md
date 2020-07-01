@@ -22,3 +22,16 @@ Things you may want to cover:
 * Deployment instructions
 
 * ...
+
+# chat-space DB
+## messagesテーブル
+|Column|Type|Option|
+|------|----|------|
+|body|text|null: false, foreign_key: true|
+|image|string|foreign_key: true|
+|group_id|integer|null: false, foreign_key: true|
+|user_id|integer|null: false, foreign_key: true|
+
+### Association
+- has_many :group
+- belongs_to :user

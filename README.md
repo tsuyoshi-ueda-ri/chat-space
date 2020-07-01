@@ -27,13 +27,13 @@ Things you may want to cover:
 ## messagesテーブル
 |Column|Type|Option|
 |------|----|------|
-|body|text|null: false, foreign_key: true|
-|image|string|foreign_key: true|
+|body|text||
+|image|string||
 |group_id|integer|null: false, foreign_key: true|
 |user_id|integer|null: false, foreign_key: true|
 
 ### Association
-- has_many :group
+- belongs_to :group
 - belongs_to :user
 
 ## usersテーブル
@@ -43,19 +43,18 @@ Things you may want to cover:
 |name|string|null: false|
 
 ### Association
-- has_many :message
-- has_many :group, through:  :groups_users
+- has_many :messages
+- has_many :groups, through:  :groups_users
 - has_many :groups_users
 
 ## groupsテーブル
 |Column|Type|Options|
 |------|----|-------|
-|group_name|string|null: false|
-|name|string|null: false, foreign_key: true|
+|name|string|null: false|
 
 ### Association
-- belongs_to :message
-- has_many :user, through:  :groups_users
+- has_many :message
+- has_many :userss, through:  :groups_users
 - has_many :groups_users
 
 ## groups_usersテーブル

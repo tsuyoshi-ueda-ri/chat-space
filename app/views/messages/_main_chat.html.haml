@@ -1,0 +1,26 @@
+.main_chat
+  .main_chat__info
+    .main_chat__info__box
+      .main_chat__info__box__group-name
+        test
+        .main_chat__info__box__edit
+          = link_to 'Edit','#', class: "edit-btn" 
+      .main_chat__info__box__menber-name
+        Menber:masa
+  .main_chat__message
+    .main_chat__message__box
+      .main_chat__message__box__name
+        masa
+        .main_chat__message__box__name__login-time
+          2019/11/20(wed)17:43:01
+      .main_chat__message__box__comment
+        おはよう！
+  .main_chat__form
+    .main_chat__form__box
+      .main_chat__form__box__input
+        %input.class-name__text{type: "text",placeholder: "type a message"}
+        %label{class: "class-name__text__icon"}
+          = icon('far', 'image')
+          %input.class-name__text__icon__label{type: "file" }
+      %input.class-name__submit{type: "submit" ,value: "Send"}
+            

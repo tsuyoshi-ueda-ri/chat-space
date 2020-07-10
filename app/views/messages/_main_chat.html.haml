@@ -8,6 +8,7 @@
       .main_chat__info__box__menber-name
         Menber:masa
   .main_chat__message
+    = render @messages
     .main_chat__message__box
       .main_chat__message__box__name
         masa
@@ -16,11 +17,11 @@
       .main_chat__message__box__comment
         おはよう！
   .main_chat__form
-    .main_chat__form__box
+    = form_with model: [@group, @message], html: {class: "main_chat__form__box"}, local: true do |f|
       .main_chat__form__box__input
-        %input.class-name__text{type: "text",placeholder: "type a message"}
-        %label{class: "class-name__text__icon"}
-          = icon('far', 'image')
-          %input.class-name__text__icon__label{type: "file" }
-      %input.class-name__submit{type: "submit" ,value: "Send"}
+       = f.text_field :content, class: 'name__text', placeholder: "type a message"
+       = f.label :image, class: 'class-name__text__icon' do
+          = icon('far', 'image', class: 'Form__icon')
+          = f.file_field :image, class: 'name__text__icon__label'
+      = f.submit 'Send', class: 'name__submit'
             

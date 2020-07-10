@@ -46,6 +46,17 @@ $simple-color: #ffffff;
   }
   &__group__box {
     padding-bottom: 40px;
+    &__wrapper {
+      text-decoration: none;
+    }
+  }
+  &__group__box__name {
+    color: #fff;
+    text-decoration: none;
+  }
+  &__group__box__comment {
+    color: #fff;
+    text-decoration: none;
   }
 }
 

@@ -12,10 +12,6 @@
           = user.name
   .main_chat__message
     = render @messages
-    .main_chat__message__box
-      .main_chat__message__box__name
-        .main_chat__message__box__name__login-time
-      .main_chat__message__box__comment
   .main_chat__form
     = form_with model: [@group, @message], html: {class: "main_chat__form__box"}, local: true do |f|
       .main_chat__form__box__input

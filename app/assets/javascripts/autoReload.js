@@ -2,7 +2,7 @@ $(function(){
   function buildHTML(message){
     if ( message.image ) {
       let html =
-        `<div class="MessageBox">
+        `<div class="MessageBox" data-message-id=${message.id}>
           <div class="MessageInfo">
             <div class="MessageInfo__userName">
               ${message.user_name}
@@ -21,7 +21,7 @@ $(function(){
       return html;
     } else {
       let html =
-      `<div class="MassageBox">
+      `<div class="MessageBox" data-message-id=${message.id}>
         <div class="MessageInfo">
           <div class="MessageInfo__userName">
             ${message.user_name}
@@ -40,29 +40,28 @@ $(function(){
     };
   }
 
-  $('.main_chat__form__box').on('submit', function(e){
-    e.preventDefault()
-    let formData = new FormData(this);
-    let url = $(this).attr('action');
-    $('.class-name__submit').removeAttr('data-disble-with');
-
+  let reloadMessages = function() {
+    let last_message_id = $('.MessageBox:last').data("message-id") || 0;
+    console.log
     $.ajax({
-      url: url,
-      type: "POST",
-      data: formData,
+      url: "api/messages",
+      type: 'get',
       dataType: 'json',
-      processData: false,
-      contentType: false
+      data: {id: last_message_id}
     })
-    .done(function(data){
-      let html = buildHTML(data);
-      $('.main_chat__message').append(html);
-      $('.main_chat__message').animate({ scrollTop: $('.main_chat__message')[0].scrollHeight});
-      $('form')[0].reset();
+    .done(function(messages) {
+      if (messages.length !== 0) {
+        let insertHTML = '';
+        $.each(messages, function(i, message) {
+          insertHTML += buildHTML(message)
+        });
+        $('.main_chat__message').append(insertHTML);
+        $('.main_chat__message').animate({ scrollTop: $('.main_chat__message')[0].scrollHeight});
+      }
     })
     .fail(function() {
-      alert('メッセージを送信できません');
+      alert('error');
     });
-    return false;
-  });
+  };
+  setInterval(reloadMessages, 7000);
 });

@@ -38,7 +38,6 @@ group :development, :test do
   gem 'faker'
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'
-  gem 'devise'
 end
 
 group :development do
@@ -63,6 +62,7 @@ gem 'font-awesome-sass'
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'jquery-rails'
+gem 'devise'
 
 group :production do
   gem 'unicorn', '5.4.1'
